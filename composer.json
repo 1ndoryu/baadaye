@@ -17,6 +17,15 @@
     "require": {
         "php": ">=5.6"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:1ndoryu/glory.git"  
+        }
+    ],
+    "require": {
+        "1ndoryu/glory": "dev-main"  
+    },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "wptrt/wpthemereview": "^0.2.1",
