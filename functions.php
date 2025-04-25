@@ -1,6 +1,21 @@
 <?php
 # functions.php
-require_once get_template_directory() . '/Glory/load.php';
+
+
+$autoloader = get_template_directory() . '/vendor/autoload.php';
+if (file_exists($autoloader)) {
+    require_once $autoloader;
+} else {
+    error_log('Error: Composer autoload no encontrado. Ejecuta "composer install".');
+}
+
+$glory_loader = get_template_directory() . '/Glory/load.php';
+if (file_exists($glory_loader)) {
+    require_once $glory_loader;
+} else {
+     error_log('Error: Glory Framework loader no encontrado.');
+}
+
 
 function incluirArchivos($directorio)
 {
