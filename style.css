@@ -32,28 +32,6 @@ html {
     --ancho: 600px;
 }
 
-.client-logos-wrap::-webkit-scrollbar {
-    height: 0px;
-}
-
-.client-logos-wrap {
-    display: flex;
-    flex-direction: row;
-    gap: 60px;
-    overflow-x: scroll;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding: 40px;
-    margin-top: 20px;
-}
-
-.client-logo img {
-    min-height: 50px;
-    height: 100%;
-    min-width: 110px;
-    opacity: 60%;
-    filter: saturate(0);
-}
 
 ::-webkit-scrollbar {
     width: 4px;

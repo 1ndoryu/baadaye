@@ -1,8 +1,10 @@
 <?php
 # App/Glory/Helpers/LogoHelper.php  
+# En construcción
+
 namespace App\Glory\Helpers;
 
-class LogoHelper 
+class LogoHelper
 {
     /**
      * Fetches logos defined via the WordPress admin.
@@ -30,83 +32,83 @@ class LogoHelper
     private static function fetchDefaultLogos(string $folderRelPath): array
     {
         $defaultLogos = [];
-        $themeDir = get_template_directory(); // Use parent theme directory
+        $themeDir = get_template_directory();
         $fullFolderPath = $themeDir . '/' . trim($folderRelPath, '/');
         $folderUrl = get_template_directory_uri() . '/' . trim($folderRelPath, '/');
 
         if (!is_dir($fullFolderPath)) {
-            // Optionally log an error if the folder is expected but not found
-            // error_log("LogoHelper: Default logo folder not found at {$fullFolderPath}"); // <--- Opcional: Actualizar mensaje si se usa
-            return []; // Return empty array if folder doesn't exist
+            return [];
         }
 
-        // Scan specifically for SVG files as per original logic
         $svgFiles = glob($fullFolderPath . '/*.svg');
 
         if ($svgFiles === false) {
-             // error_log("LogoHelper: Failed to scan folder {$fullFolderPath}"); // <--- Opcional: Actualizar mensaje si se usa
-             return []; // Error scanning directory
+            return [];
         }
 
         foreach ($svgFiles as $svgFilePath) {
             $fileName = basename($svgFilePath);
             $logoUrl  = $folderUrl . '/' . $fileName;
-            // Generate a somewhat meaningful alt text from filename
             $altText  = 'Logo: ' . ucwords(str_replace(['-', '_'], ' ', pathinfo($fileName, PATHINFO_FILENAME)));
 
             $defaultLogos[] = [
                 'url' => $logoUrl,
                 'alt' => $altText,
-                'type' => 'default-logo' // Add type for potential styling hooks
+                'type' => 'default-logo'
             ];
         }
 
         return $defaultLogos;
     }
 
+
     /**
-     * Generates the HTML markup for the client logos.
-     * Combines logos from admin (if enabled) and default folder.
+     * Generates the HTML markup for the client logos scroller.
+     * Includes the necessary outer wrapper for CSS animation.
      *
      * @param string $defaultLogoFolderRelPath Relative path to the default logos folder.
      * @param bool $includeAdminLogos Whether to include logos defined in WP Admin.
-     * @return string HTML output for client logos, or empty string if none found.
+     * @return string HTML output for client logos scroller, or empty string if none found.
      */
+
     private static function getHtml(string $defaultLogoFolderRelPath = 'assets/svg/client-logos', bool $includeAdminLogos = true): string
     {
         $adminLogos = [];
         if ($includeAdminLogos) {
             $adminLogos = self::fetchAdminLogos();
-            // Ensure admin logos have the 'type' key for consistency
-             foreach ($adminLogos as &$logo) { // Use reference to modify array directly
+            foreach ($adminLogos as &$logo) {
                 $logo['type'] = 'admin-logo';
-             }
-             unset($logo); // Unset reference after loop
+            }
+            unset($logo);
         }
 
         $defaultLogos = self::fetchDefaultLogos($defaultLogoFolderRelPath);
-
-        // Combine logos - admin logos first (if any)
         $allLogos = array_merge($adminLogos, $defaultLogos);
 
         if (empty($allLogos)) {
-            return ''; // No logos to display
+            return ''; # No logos to display
         }
 
-        ob_start();
-        ?>
-        <div class="client-logos-wrap">
-            <?php foreach ($allLogos as $logo) : ?>
-                <?php if (isset($logo['url']) && isset($logo['alt'])) : // Basic check for required data ?>
-                    <div class="client-logo <?= esc_attr($logo['type']) ?>">
-                        <img src="<?= esc_url($logo['url']) ?>" alt="<?= esc_attr($logo['alt']) ?>" loading="lazy">
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
+        ob_start(); ?>
+        
+        <div class="logo-scroller-outer">
+            <div class="client-logos-wrap">
+                <?php foreach ($allLogos as $logo) : ?>
+                    <?php if (isset($logo['url']) && isset($logo['alt'])) : ?>
+                        <div class="client-logo <?= esc_attr($logo['type']) ?>">
+                            <img src="<?= esc_url($logo['url']) ?>" alt="<?= esc_attr($logo['alt']) ?>" loading="lazy">
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <?php # JS will duplicate logos here 
+                ?>
+            </div>
         </div>
-        <?php
+
+<?php
         return ob_get_clean();
     }
+
 
     /**
      * Prints the client logos HTML structure directly.

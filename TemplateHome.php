@@ -6,8 +6,12 @@ Template Name: Home
 use App\Glory\ContentManager;
 use App\Glory\Helpers\LogoHelper;
 
+
+
 get_header();
 ?>
+
+
 <main class="main" id="content">
     <div class="hero">
 
@@ -27,7 +31,7 @@ get_header();
             </div>
 
         </div>
-
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/App/css/logoHelper.css" />
         <?php echo LogoHelper::render(); ?>
     </div>
 </main>
