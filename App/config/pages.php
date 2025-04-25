@@ -1,6 +1,6 @@
 <?php 
 # App/config/pages.php
-use App\Glory\PageManager;
+use Glory\PageManager;
 
 # Define your pages here:
 PageManager::define('home'); # Title: 'Home', Template: 'TemplateHome.php'

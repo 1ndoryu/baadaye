@@ -3,9 +3,9 @@
 Template Name: Home
 */
 
-use App\Glory\ContentManager;
-use App\Glory\Components\LogoHelper;
-use App\Glory\Components\EmailFormBuilder;
+use Glory\ContentManager;
+use Glory\Components\LogoHelper;
+use Glory\Components\EmailFormBuilder;
 
 
 get_header();

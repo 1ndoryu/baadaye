@@ -1,6 +1,6 @@
 <?php
 # App/config/script.php
-use App\Glory\ScriptManager;
+use Glory\ScriptManager;
 
 # Configuración Global 
 ScriptManager::setGlobalDevMode(true);  
