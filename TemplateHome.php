@@ -4,10 +4,11 @@ Template Name: Home
 */
 
 use App\Glory\ContentManager;
+use App\Glory\Helpers\LogoHelper;
 
 get_header();
 ?>
-<main class="main">
+<main class="main" id="content">
     <div class="hero">
 
         <div class="home-hero-header">
@@ -25,8 +26,9 @@ get_header();
                 <p class="subheading">Enjoy unlimited global service for $69/mo. No roaming fees, or&nbsp;headaches.</p>
             </div>
 
-
         </div>
+
+        <?php echo LogoHelper::render(); ?>
     </div>
 </main>
 <?php wp_footer(); ?>

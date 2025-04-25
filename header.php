@@ -35,7 +35,7 @@
                         echo '<div class="nav-menu"># Please assign a menu to the Primary Menu location.</div>';
                     }
                     ?>
-
+                    <div id="loadingBar" style="position: fixed; top: 0; left: 0; height: 3px; background-color: #007bff; width: 0; opacity: 0; transition: width 0.3s ease, opacity 0.3s ease; z-index: 9999;"></div>
 
                 </div>
                 <div class="nav-right">

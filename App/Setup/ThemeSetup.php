@@ -76,7 +76,6 @@ add_action('after_switch_theme', 'checkAndSetupDefaultMenu');
 # Run check on admin load (safeguard if not set or gets unassigned)
 add_action('admin_init', 'checkAndSetupDefaultMenu');
 
-
 # Enqueue the main stylesheet
 function themeEnqueueStyles() {
 	wp_enqueue_style( 'themeStyle', get_stylesheet_uri() );
@@ -84,5 +83,8 @@ function themeEnqueueStyles() {
 add_action( 'wp_enqueue_scripts', 'themeEnqueueStyles' );
 
 add_filter( 'show_admin_bar', '__return_false' );
+
+# Add theme support
+
 
 ?>

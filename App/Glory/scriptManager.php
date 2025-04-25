@@ -175,4 +175,6 @@ class ScriptManager
             );
         }
     }
-} # End class ScriptManager
+} 
+
+

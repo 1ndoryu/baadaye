@@ -23,6 +23,51 @@ html {
     -ms-text-size-adjust: 100%;
 }
 
+:root {
+    --fondo: #070707;
+    --borde: 1px #161616 solid;
+    --radius: 5px;
+    --bordeBoton: 1px #1f1f1f8c solid;
+    --padding: 20px;
+    --ancho: 600px;
+}
+
+.client-logos-wrap::-webkit-scrollbar {
+    height: 0px;
+}
+
+.client-logos-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 40px;
+    margin-top: 20px;
+}
+
+.client-logo img {
+    min-height: 50px;
+    height: 100%;
+    min-width: 110px;
+    opacity: 60%;
+    filter: saturate(0);
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background: none;
+}
+
 /* 
 W
 W
