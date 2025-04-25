@@ -1,5 +1,6 @@
 <?php
 # functions.php
+require_once get_template_directory() . '/Glory/load.php';
 
 function incluirArchivos($directorio)
 {
