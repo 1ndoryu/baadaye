@@ -4,8 +4,40 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8de789a2c20183752e72c14c93a923cf",
-    "packages": [],
+    "content-hash": "faee29f7977a0c584a1d4883e145720a",
+    "packages": [
+        {
+            "name": "1ndoryu/glory",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1ndoryu/Glory.git",
+                "reference": "8160c7a5b42d46d8a4428f3621342016dac4c7c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1ndoryu/Glory/zipball/8160c7a5b42d46d8a4428f3621342016dac4c7c9",
+                "reference": "8160c7a5b42d46d8a4428f3621342016dac4c7c9",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Glory\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Framework Glory para temas WordPress",
+            "support": {
+                "source": "https://github.com/1ndoryu/Glory/tree/main",
+                "issues": "https://github.com/1ndoryu/Glory/issues"
+            },
+            "time": "2025-04-25T16:22:57+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -1189,12 +1221,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "1ndoryu/glory": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "php": ">=5.6"
-    },
+    "platform": [],
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

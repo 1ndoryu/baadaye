@@ -3,7 +3,7 @@
 Template Name: Home
 */
 
-use Glory\ContentManager;
+use Glory\Class\ContentManager;
 use Glory\Components\LogoHelper;
 use Glory\Components\EmailFormBuilder;
 
