@@ -92,7 +92,7 @@ if (!class_exists('PageManager')) {
                         $currentPageId = $insertedId;
                         # MARK THE PAGE AS MANAGED!
                         update_post_meta($currentPageId, self::MANAGED_META_KEY, true);
-                        error_log("PageManager: Created and marked page '{$pageSlug}' (ID: {$currentPageId}) as managed.");
+                        #error_log("PageManager: Created and marked page '{$pageSlug}' (ID: {$currentPageId}) as managed.");
                     } else {
                         error_log("PageManager: Failed to create page '{$pageSlug}': " . $insertedId->get_error_message());
                         continue;
@@ -107,7 +107,7 @@ if (!class_exists('PageManager')) {
 
                     if ($currentTemplate !== $pageTemplate) {
                         update_post_meta($currentPageId, '_wp_page_template', $pageTemplate);
-                         error_log("PageManager: Updated template for managed page '{$pageSlug}' (ID: {$currentPageId}).");
+                         #error_log("PageManager: Updated template for managed page '{$pageSlug}' (ID: {$currentPageId}).");
                     }
                     # Optional Title Update (still risky)
                     # if ($existingPage->post_title !== $pageTitle) { ... }
@@ -142,7 +142,7 @@ if (!class_exists('PageManager')) {
          * @internal
          */
         public static function reconcileManagedPages() {
-             error_log("PageManager: Starting reconciliation...");
+             #error_log("PageManager: Starting reconciliation...");
 
             # Get the list of page IDs that were confirmed/created in *this specific run*
             $currentlyDefinedAndProcessedIds = get_transient('pagemanager_processed_ids');
@@ -154,7 +154,7 @@ if (!class_exists('PageManager')) {
                  // Or if the transient expired between processPages and reconcile.
                  // Decide how to handle this: either log an error and bail, or proceed cautiously
                  // by perhaps fetching IDs based on self::$pages (less reliable if processPages failed partially).
-                 // For safety, let's bail if we don't have the confirmed list from the transient.
+                 // For safety, let's bail if we don't have the confirmed list from the transient. 
                  error_log("PageManager: Reconciliation skipped. Could not retrieve processed IDs transient. This might be normal on first load after transient expiry or if processPages failed.");
                  return;
              }
@@ -171,19 +171,19 @@ if (!class_exists('PageManager')) {
             $potentiallyManagedPageIds = get_posts($args);
 
             if (empty($potentiallyManagedPageIds)) {
-                 error_log("PageManager: Reconciliation - No pages found marked as managed.");
+                 #error_log("PageManager: Reconciliation - No pages found marked as managed.");
                 return; # Nothing found marked as managed
             }
 
-            error_log("PageManager: Reconciliation - Found managed page IDs in DB: " . implode(', ', $potentiallyManagedPageIds));
-            error_log("PageManager: Reconciliation - Currently defined & processed IDs: " . implode(', ', $currentlyDefinedAndProcessedIds));
+            #error_log("PageManager: Reconciliation - Found managed page IDs in DB: " . implode(', ', $potentiallyManagedPageIds));
+            #error_log("PageManager: Reconciliation - Currently defined & processed IDs: " . implode(', ', $currentlyDefinedAndProcessedIds));
 
 
             # Figure out which pages have the flag but are NOT in the current definition list
             $pagesToDeleteIds = array_diff($potentiallyManagedPageIds, $currentlyDefinedAndProcessedIds);
 
             if (empty($pagesToDeleteIds)) {
-                 error_log("PageManager: Reconciliation - No pages to delete.");
+                 #error_log("PageManager: Reconciliation - No pages to delete.");
                 return; # All managed pages are accounted for in the current definition.
             }
 
@@ -202,7 +202,7 @@ if (!class_exists('PageManager')) {
                 $deleted = wp_delete_post($pageId, $force_delete);
 
                 if ($deleted) {
-                    error_log("PageManager: DELETED managed page with ID: {$pageId} (Force delete: " . ($force_delete ? 'Yes' : 'No') . ")");
+                    #error_log("PageManager: DELETED managed page with ID: {$pageId} (Force delete: " . ($force_delete ? 'Yes' : 'No') . ")");
                 } else {
                     # This can happen if the page was already deleted, or permissions issue, or hook interference.
                     error_log("PageManager: FAILED to delete managed page with ID: {$pageId}. It might already be deleted or another issue occurred.");
@@ -229,7 +229,7 @@ if (!class_exists('PageManager')) {
                  if ($current_show_on_front !== 'page' || $current_page_on_front != $homePageId) {
                      update_option('show_on_front', 'page');
                      update_option('page_on_front', $homePageId);
-                      error_log("PageManager: Set front page to ID: {$homePageId}");
+                      #error_log("PageManager: Set front page to ID: {$homePageId}");
                      # Optional: Unset posts page if it conflicts
                      if (get_option('page_for_posts') == $homePageId) {
                          update_option('page_for_posts', 0);
@@ -241,7 +241,7 @@ if (!class_exists('PageManager')) {
                      update_option('show_on_front', 'posts');
                      update_option('page_on_front', 0);
                      # update_option('page_for_posts', 0); # Usually unset too
-                     error_log("PageManager: Set front page to 'posts' (no home page defined/found).");
+                     #error_log("PageManager: Set front page to 'posts' (no home page defined/found).");
                  }
              }
         }

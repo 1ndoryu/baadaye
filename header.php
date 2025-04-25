@@ -42,7 +42,7 @@
                     <a openmodal="sign-up" href="#" class="cta cc-nav w-inline-block">
                         <div class="cta-bg u-rainbow u-blur-perf"></div>
                         <div class="cta-inner cc-nav">
-                            <div>Sign up</div>
+                            <div>Send brief</div>
                         </div>
                     </a>
                 </div>

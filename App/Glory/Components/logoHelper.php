@@ -1,8 +1,8 @@
 <?php
-# App/Glory/Helpers/LogoHelper.php  
+# App/Glory/Components/LogoHelper.php  
 # En construcción
 
-namespace App\Glory\Helpers;
+namespace App\Glory\Components;
 
 class LogoHelper
 {
@@ -96,7 +96,7 @@ class LogoHelper
                 <?php foreach ($allLogos as $logo) : ?>
                     <?php if (isset($logo['url']) && isset($logo['alt'])) : ?>
                         <div class="client-logo <?= esc_attr($logo['type']) ?>">
-                            <img src="<?= esc_url($logo['url']) ?>" alt="<?= esc_attr($logo['alt']) ?>" loading="lazy">
+                            <img src="<?= esc_url($logo['url']) ?>" alt="<?= esc_attr($logo['alt']) ?>">
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
