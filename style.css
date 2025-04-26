@@ -32,6 +32,15 @@ html {
     --ancho: 600px;
 }
 
+.nav-hidden-by-modal {
+    display: none !important; /* O usa opacity/visibility si prefieres transiciones */
+    /* Ejemplo con transición:
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    */
+}
 
 ::-webkit-scrollbar {
     width: 4px;
@@ -44,6 +53,50 @@ html {
 }
 ::-webkit-scrollbar-track {
     background: none;
+}
+/*input[type="text"] */
+input[type='text'] {
+    padding: 10px;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    font-family: inherit;
+    color: rgb(0, 0, 0);
+    padding-block-start: 0px;
+    padding-block-end: 3px;
+    padding-inline: 0px;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    appearance: none;
+    background-image: none;
+    padding-top: 5px;
+    background-position: initial;
+    background-size: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    transform: translateZ(0px);
+    font-size: 24px;
+    -webkit-font-smoothing: antialiased;
+    line-height: unset;
+    -webkit-text-fill-color: #000000;
+    animation: 1ms ease 0s 1 normal none running native-autofill-in;
+    transition: background-color 1e8s, box-shadow 0.1s ease-out;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px;
+    background-color: transparent !important;
+}
+
+.form-submit {
+    z-index: 2;
+    background-color: var(--black);
+    border-radius: 100px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: background-color 0.15s;
+    position: absolute;
+    inset: 10px 10px 10px auto;
 }
 
 /* 
@@ -360,10 +413,7 @@ html.w-mod-touch * {
     color: #fff;
     line-height: inherit;
     cursor: pointer;
-    background-color: #3898ec;
     border: 0;
-    border-radius: 0;
-    padding: 9px 15px;
     text-decoration: none;
     display: inline-block;
 }
@@ -2427,7 +2477,7 @@ p {
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
-    max-width: 800px;
+    max-width: 670px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -2690,21 +2740,6 @@ p {
 
 .input.cc-cta-banner {
     min-width: 0;
-}
-
-.form-submit {
-    z-index: 2;
-    background-color: var(--black);
-    border-radius: 100px;
-    padding: 12px 30px;
-    font-weight: 600;
-    transition: background-color 0.15s;
-    position: absolute;
-    inset: 10px 10px 10px auto;
-}
-
-.form-submit:hover {
-    background-color: #1a1919;
 }
 
 .input-bg {
@@ -4582,13 +4617,6 @@ p {
         min-height: 50px;
         padding-left: 20px;
         padding-right: 117px;
-    }
-
-    .form-submit {
-        font-size: 14px;
-        top: 4px;
-        bottom: 4px;
-        right: 5px;
     }
 
     .hero-highlights-wrap {

@@ -37,9 +37,6 @@ const initInfinityScroll = () => {
     updateInfinityPath(); // Initial check
 };
 
-// Run after DOM is loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initInfinityScroll);
-} else {
-    initInfinityScroll(); // Already loaded
-}
+document.addEventListener('themePageReady', initInfinityScroll);
+
+

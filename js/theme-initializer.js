@@ -25,5 +25,5 @@
     document.addEventListener('themePageReady', runInitializers);
 
     // Note: themePageReady is also fired on the initial page load within ajax-navigation.js,
-    // so you generally don't need a separate DOMContentLoaded listener here for these initializers.
+    // so you generally don't need a separate themePageReady listener here for these initializers.
 })();

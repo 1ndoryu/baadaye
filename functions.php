@@ -1,7 +1,6 @@
 <?php
 # functions.php
 
-
 $autoloader = get_template_directory() . '/vendor/autoload.php';
 if (file_exists($autoloader)) {
     require_once $autoloader;
@@ -33,8 +32,11 @@ function incluirArchivos($directorio)
     }
 }
 
+
+
 $directorios = [
     'App/',
+    'Glory/Services',
 ];
 
 foreach ($directorios as $directorio) {

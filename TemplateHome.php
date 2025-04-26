@@ -28,13 +28,13 @@ get_header();
             </h1>
             <div class="home-hero-subheading">
                 <p class="subheading">
-                    <?php echo ContentManager::text('subheading', 'Focused on delivering measurable results and elevating your brand.'); ?>
+                    <?php echo ContentManager::text('subHeading', 'Focused on delivering measurable results and elevating your brand.'); ?>
                 </p>
             </div>
 
-            <?php EmailFormBuilder::display([
-                'form_id' => 'newsletter-footer', 
-                'email_placeholder' => 'Your email address', 
+            <?php EmailFormBuilder::displayWithModal([
+                'form_id' => 'newsletter-footer',
+                'email_placeholder' => 'Your email address',
                 'submit_value' => 'Join Us',
             ]); ?>
 
@@ -43,6 +43,6 @@ get_header();
         <?php LogoHelper::render(); ?>
     </div>
 </main>
-<?php 
+<?php
 get_footer();
 ?>
