@@ -7,7 +7,7 @@ use Glory\Class\ContentManager;
 use Glory\Components\LogoHelper;
 use Glory\Components\EmailFormBuilder;
 use Glory\Components\FormModalBuilder;
-
+use Glory\Components\PostDisplay;
 
 get_header();
 ?>
@@ -73,6 +73,21 @@ get_header();
 
 
         </div>
+
+        <div class="test">
+            <?php
+            PostDisplay::render(
+                'portfolio_item',  
+                [                  
+                    'posts_per_page' => 3,
+                    'template_path'  => get_stylesheet_directory() . '/App/View/PortafolioPost.php',
+                    'title_tag'      => 'h3',
+                    'show_excerpt'   => false,
+                ]
+            );
+            ?>
+        </div>
+
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/App/css/logoHelper.css" />
         <?php LogoHelper::render(); ?>
     </div>
