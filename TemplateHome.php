@@ -74,12 +74,16 @@ get_header();
 
         </div>
 
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/App/css/logoHelper.css" />
+        <?php LogoHelper::render(); ?>
+
+
         <div class="test">
             <?php
             PostDisplay::render(
-                'portfolio_item',  
-                [                  
-                    'posts_per_page' => 3,
+                'portfolio_item',
+                [
+                    'posts_per_page' => 4,
                     'template_path'  => get_stylesheet_directory() . '/App/View/PortafolioPost.php',
                     'title_tag'      => 'h3',
                     'show_excerpt'   => false,
@@ -87,9 +91,7 @@ get_header();
             );
             ?>
         </div>
-
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/App/css/logoHelper.css" />
-        <?php LogoHelper::render(); ?>
+        
     </div>
 </main>
 <?php
