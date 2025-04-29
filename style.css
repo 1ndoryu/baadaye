@@ -3,6 +3,12 @@ a {
     text-decoration: none; /* Elimina el subrayado */
 }
 
+main#content {
+    max-width: 1250px;
+    margin: auto;
+    width: 100%;
+}
+
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -12,7 +18,7 @@ a {
 
 body {
     color: var(--black);
-    background-color: #f7f7f7;
+    background-color: #f6f6f6;
     font-family: Messina Sans, sans-serif;
     font-size: 16px;
     line-height: 1.2;
@@ -92,7 +98,7 @@ input[type='text'] {
     z-index: 2;
     background-color: var(--black);
     border-radius: 100px;
-    padding: 12px 30px;
+    padding: 10px 30px;
     font-weight: 600;
     transition: background-color 0.15s;
     position: absolute;
@@ -2496,8 +2502,8 @@ p {
 .home-hero-heading {
     letter-spacing: -0.03em;
     margin-bottom: 32px;
-    font-family: Untitled Serif, sans-serif;
-    font-size: 84px;
+    font-family: Gothic №60;
+    font-size: 86px;
     font-weight: 400;
     line-height: 1;
 }
@@ -2540,7 +2546,7 @@ p {
 .subheading {
     color: var(--dark-grey);
     letter-spacing: -0.03em;
-    font-size: 19px;
+    font-size: 17px;
     line-height: 1.4;
 }
 
@@ -2720,14 +2726,15 @@ p {
 .input {
     z-index: 1;
     color: var(--black);
-    border: 1px solid #f0efef;
+    border: 1px solid #7a7a7a;
     border-radius: 100px;
-    min-width: 480px;
-    min-height: 62px;
+    min-width: 476px;
+    min-height: 58px;
     margin-bottom: 0;
     padding: 14px 147px 14px 28px;
     font-size: 16px;
     position: relative;
+    background: unset;
 }
 
 .input:focus {
@@ -4968,4 +4975,47 @@ p {
     font-weight: 400;
     font-style: normal;
     font-display: swap;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.svg-container {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* padding: 100px; */
+    margin-bottom: 40px;
+}
+
+.space-div p {
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+svg#uuid-dbfa4d8e-76c7-49b6-a7f7-2447ca454ece {
+    max-width: 100px;
+    margin: 0px;
+}
+
+.separador {
+    max-width: 1250px;
+    width: 100%;
+    margin: auto;
+    padding: 100px 0px;
+    padding-bottom: 80px;
+}
+
+.separador-linea {
+    border-top: 1px solid #7a7a7a;
+}
+
+p.separador-titulo {
+    padding: 20px 0px;
+    font-size: 18px;
 }
