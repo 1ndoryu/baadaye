@@ -2397,7 +2397,7 @@ p {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1250px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -5018,4 +5018,12 @@ svg#uuid-dbfa4d8e-76c7-49b6-a7f7-2447ca454ece {
 p.separador-titulo {
     padding: 20px 0px;
     font-size: 18px;
+}
+
+.nav-left svg#uuid-4a666636-1726-4c3e-8330-0e6d6f4bdacd {
+    max-width: 50px;
+    margin: 0px 35px;
+    opacity: 0.8;
+    margin-top: 10px;
+    margin-left: 0px;
 }

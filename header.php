@@ -17,7 +17,7 @@
             <div class="nav-inner">
                 <div class="nav-left">
 
-                    <p>Logo</p>
+                    <p><? echo $GLOBALS['logoMenu']; ?></p>
 
                     <?php
                     # Display the Primary Menu using Custom Walker
