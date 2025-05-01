@@ -5035,17 +5035,8 @@ p.space-title {
     font-size: 36px;
 }
 
-.a404 div {
-    margin: auto;
-    justify-items: anchor-center;
-}
-.a404 {
-    max-width: 1250px;
-    margin: auto;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    min-height: -webkit-fill-available;
+.o404 {
+    min-height: 100vh;
+    place-content: center;
+    justify-self: center;
 }

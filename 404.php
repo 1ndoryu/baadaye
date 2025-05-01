@@ -7,7 +7,7 @@ get_header();
 ?>
 
 
-<main class="main a404" id="content">
+<main class="main" id="content">
     <div class="o404">
         <h2>404</h2>
     </div>

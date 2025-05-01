@@ -18,7 +18,7 @@
     aspect-ratio: 6 / 4;
     object-fit: cover;
     display: block;
-    border-radius: 0px;
+    border-radius: 4px;
 }
 
 .type-portfolio_item .post-title a {
