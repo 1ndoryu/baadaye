@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/1ndoryu/Glory.git",
-                "reference": "8160c7a5b42d46d8a4428f3621342016dac4c7c9"
+                "reference": "e80836b0f031d761e72fa32e3c5307f5d41f3dc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/1ndoryu/Glory/zipball/8160c7a5b42d46d8a4428f3621342016dac4c7c9",
-                "reference": "8160c7a5b42d46d8a4428f3621342016dac4c7c9",
+                "url": "https://api.github.com/repos/1ndoryu/Glory/zipball/e80836b0f031d761e72fa32e3c5307f5d41f3dc5",
+                "reference": "e80836b0f031d761e72fa32e3c5307f5d41f3dc5",
                 "shasum": ""
             },
             "default-branch": true,
@@ -35,7 +35,7 @@
                 "source": "https://github.com/1ndoryu/Glory/tree/main",
                 "issues": "https://github.com/1ndoryu/Glory/issues"
             },
-            "time": "2025-04-25T16:22:57+00:00"
+            "time": "2025-05-01T15:04:55+00:00"
         }
     ],
     "packages-dev": [
@@ -1226,7 +1226,7 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
