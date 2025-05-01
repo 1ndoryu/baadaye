@@ -11,6 +11,8 @@ StyleManager::setGlobalDevMode(true);
 StyleManager::setThemeVersion('0.1.2'); 
 
 ScriptManager::defineFolder('/js');
+
+StyleManager::defineFolder('assets/css');
 PageManager::define('home');
 
 ScriptManager::register();

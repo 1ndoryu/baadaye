@@ -82,6 +82,8 @@ get_header();
 
     <div class="space-div">
 
+
+
         <div class="svg-container">
             <?php echo $GLOBALS['logoHomeAnimation']; ?>
         </div>
@@ -94,8 +96,11 @@ get_header();
     <div class="separador">
         <div class="separador-linea">
             <p class="separador-titulo"></p>
+            <p class="space-title">Featured Projects</p>
         </div>
     </div>
+
+
 
     <div class="postdisplay-home">
         <?php
@@ -106,9 +111,10 @@ get_header();
                 'template_path'  => get_stylesheet_directory() . '/App/View/PortafolioPost.php',
                 'title_tag'      => 'h3',
                 'show_excerpt'   => false,
-                'sector_enable'      => true, 
-                'sector_size'        => 4,    
+                'sector_enable'      => true,
+                'sector_size'        => 4,
                 'sector_class'       => 'post-sector',
+                'priority_ids'       => [49, 47, 95, 45],
             ]
         );
         ?>
