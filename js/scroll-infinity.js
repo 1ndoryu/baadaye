@@ -39,7 +39,7 @@ const initInfinityScroll = () => {
 
 document.addEventListener('themePageReady', initInfinityScroll);
 
-//
+////////////////////////////////////////////////////////////////////////////////////////
 
 const path = document.getElementById('infinity-path');
 
@@ -52,42 +52,98 @@ path.style.strokeDasharray = pathLength;
 path.style.strokeDashoffset = pathLength;
 
 // --- Scroll animation function ---
-function updatePathDrawing() {
-    // Calculate scroll progress
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight;
-    const clientHeight = document.documentElement.clientHeight;
+// File: assets/js/svg-path-animation.js
 
-    // Total scrollable distance
-    const maxScroll = scrollHeight - clientHeight;
+function initSvgPathAnim() {
+    const path = document.getElementById('infinity-path');
+    // Use the SVG element itself (or a wrapper) for position checks
+    const svgElement = path ? path.closest('svg') : null;
 
-    // Avoid division by zero if page isn't scrollable
-    if (maxScroll <= 0) {
-        path.style.strokeDashoffset = 0; // Fully draw if not scrollable
+    if (!path || !svgElement) {
+        // console.warn('SVG path or container element not found for animation.');
         return;
     }
 
-    // Calculate scroll progress (0 at top, 1 at bottom)
-    // Clamp progress between 0 and 1
-    const scrollProgress = Math.max(0, Math.min(1, scrollTop / maxScroll));
+    const pathLength = path.getTotalLength();
 
-    // Calculate the dash offset
-    // When scrollProgress is 0 (top), offset is pathLength (invisible)
-    // When scrollProgress is 1 (bottom), offset is 0 (fully visible)
-    const drawLength = pathLength * scrollProgress;
-    const offset = pathLength - drawLength;
+    // Setup initial styles
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength; // Start hidden
 
-    // Update the strokeDashoffset style
-    path.style.strokeDashoffset = offset;
+    function updatePathDrawing() {
+        const rect = svgElement.getBoundingClientRect();
+        const elTop = rect.top;
+        const elHeight = rect.height;
+        const vpHeight = window.innerHeight;
+
+        // --- Define Animation Zone ---
+        // Start animation when the top of the SVG enters the viewport (or slightly before)
+        // Let's say, start when top is at 90% of viewport height
+        const animStartThreshold = vpHeight * 0.9;
+
+        // End animation when the *bottom* of the SVG reaches the vertical center of the viewport
+        const animEndThreshold = vpHeight * 0.5;
+
+        // Calculate the element's top position where the animation should be fully complete
+        const animEndTopPosition = animEndThreshold - elHeight;
+
+        // Calculate the total scroll distance over which the animation occurs
+        // This is the distance the element's top travels from start threshold to end position
+        const totalAnimDistance = animStartThreshold - animEndTopPosition;
+
+        // Avoid division by zero or negative distance if element is huge or thresholds overlap
+        if (totalAnimDistance <= 0) {
+            // If element top is already past the end point, fully draw it
+            if (elTop < animEndTopPosition) {
+                path.style.strokeDashoffset = 0;
+            } else {
+                // Otherwise (above start or in weird state), keep hidden (or initial state)
+                path.style.strokeDashoffset = pathLength;
+            }
+            return;
+        }
+
+        // Calculate how far the element's top has moved *into* the animation zone
+        const distanceScrolledInZone = animStartThreshold - elTop;
+
+        // Calculate progress (0 to 1) within the animation zone
+        let progress = distanceScrolledInZone / totalAnimDistance;
+
+        // Clamp progress between 0 and 1
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Calculate the dash offset based on clamped progress
+        // Offset = length when progress is 0, Offset = 0 when progress is 1
+        const offset = pathLength * (1 - progress);
+
+        // Update the style
+        path.style.strokeDashoffset = offset;
+    }
+
+    let isTicking = false;
+    function onScroll() {
+        if (!isTicking) {
+            window.requestAnimationFrame(() => {
+                updatePathDrawing();
+                isTicking = false;
+            });
+            isTicking = true;
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', onScroll, {passive: true});
+
+    // Initial call to set state based on load position
+    updatePathDrawing();
 }
 
-// --- Add scroll event listener ---
-window.addEventListener('scroll', () => {
-    // Use requestAnimationFrame for performance optimization
-    window.requestAnimationFrame(updatePathDrawing);
-});
+// Run the script after the page loads or when the theme indicates readiness
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSvgPathAnim);
+} else {
+    initSvgPathAnim(); // Already loaded
+}
 
-// --- Initial call ---
-// Call the function once on load to set the initial state
-// based on the current scroll position (in case the page loads scrolled)
-updatePathDrawing();
+// Listen for custom theme event to potentially re-run or re-init if needed
+document.addEventListener('themePageReady', initSvgPathAnim);
