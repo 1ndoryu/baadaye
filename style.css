@@ -4,9 +4,10 @@ a {
 }
 
 main#content {
-    max-width: 1250px;
+    max-width: 1290px;
     margin: auto;
     width: 100%;
+    padding: 20px;
 }
 
 * {
@@ -5007,8 +5008,8 @@ svg#uuid-dbfa4d8e-76c7-49b6-a7f7-2447ca454ece {
     max-width: 1250px;
     width: 100%;
     margin: auto;
-    padding: 100px 0px;
-    padding-bottom: 80px;
+    padding: 70px 0px;
+    padding-bottom: 45px;
 }
 
 .separador-linea {
@@ -5032,7 +5033,7 @@ p.space-title {
     font-family: Gothic №60;
     /* padding: 20px; */
     padding-bottom: 0px;
-    font-size: 36px;
+    font-size: 56px;
 }
 
 .o404 {
